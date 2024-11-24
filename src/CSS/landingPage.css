@@ -7,7 +7,7 @@
   position: sticky;
 }
 .navHeadMargin{
-  margin-bottom: 300px;
+  margin-bottom: 100px;
 }
 .logoImg {
   width: 50px;
@@ -48,12 +48,19 @@ border: none;
 border-radius: 10px;
 width: 50px;
 }
+.reply{
+  width: 70%;
+  line-height: 1.8;
+  font-family: "Courier";
+  font-size: 110%;
+}
 
 p.pAnimation{
   color: white; 
   font-family: "Courier";
   font-size: 20px;
   margin: 10px 0 0 10px;
+  padding-bottom: 50px;
   overflow: hidden;
   white-space: nowrap;
   width: 90%;
@@ -95,5 +102,9 @@ span{
 }
 .askaianything{
     width: 80%;
+}
+.reply{
+  width: 85%;
+  line-height: 2;
 }
 }
