@@ -9,6 +9,7 @@ const Subscribe = () => {
   const [email, setemail] = useState('')
   const [loading, setloading] = useState(false)
   const [message, setmessage] = useState('')
+  const [subMessage, setsubMessage] = useState('')
 
   const subscribe=async()=>{
     if(!email){
@@ -17,6 +18,7 @@ const Subscribe = () => {
     }
     setloading(true)
     setmessage('')
+    setsubMessage('')
     try {
       const url = `https://base-network-agent.onrender.com/user/subscriber_mail?email=${encodeURIComponent(email)}`;
       const response = await fetch(url, {
@@ -31,6 +33,7 @@ const Subscribe = () => {
           console.error('Error Response:', errorData);
           console.log(errorData.detail)
           setloading(false);
+          setsubMessage('')
           setmessage(errorData.detail)
           return;
       }
@@ -38,7 +41,8 @@ const Subscribe = () => {
       const data = await response.json();
       console.log('Success:', data);
       console.log(data)
-      setmessage(data.message)
+      setmessage('')
+      setsubMessage(data.message)
   } catch (error) {
       console.error('Error:', error.message);
   }
@@ -89,6 +93,7 @@ const Subscribe = () => {
           placeholder='Email' id='email' name='email' value={email}
           onChange={(e)=>setemail(e.target.value)}/> <br /> <br />
             <div style={{color:'red'}}>{message}</div>
+            <div style={{color:'rgb(13, 110, 253)'}}>{subMessage}</div>
         
            {loading ? (
               <div className="d-flex justify-content-center">
