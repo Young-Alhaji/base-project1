@@ -12,6 +12,11 @@ const LandingPage = () => {
   const [loading, setloading] = useState(false)
   const [reply, setreply] = useState('')
   const [allReply, setallReply] = useState([])
+  let navigate = useNavigate()
+
+  const subscribe =()=>{
+    navigate('/subscribe')
+  }
 
 
   const ask = async () => {
@@ -41,24 +46,11 @@ const LandingPage = () => {
         const errorData = await response.json();
         console.error('Error:', errorData);
         throw new Error(`Request failed with status ${response.status}`);
-      }
-  
-      
-      
+      }    
         const data = await response.json(); // Parse the JSON response
         console.log(data.content)
-        // if(data.content){
           setreply(data.content)
-          console.log(reply)
-        // }
-       
-      
-    //   let eachReply={reply}
-    // setallReply(()=>{
-    //   let locReply=[...allReply,eachReply]
-    //   localStorage.reply=JSON.stringify(locReply)
-    //   return locReply
-    // })
+          console.log(reply)  
       console.log('Response:', data);
     } catch (error) {
       console.error('Fetch error:', error.message);
@@ -73,7 +65,7 @@ const LandingPage = () => {
           <img src="logo.png" alt="Base Logo" className="logoImg"/>
         </div>
         <div className="baseTitle">Base</div>
-        <button className="newsletterBtn">Subscribe</button>
+        <button className="newsletterBtn" onClick={subscribe}>Subscribe</button>
       </div> 
       <div className="navHeadMargin">
         <p className="pAnimation">Base is built for everyone</p>
